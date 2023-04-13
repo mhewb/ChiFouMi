@@ -1,5 +1,8 @@
 package com.formation.chifoumi.servlets;
 
+import com.formation.chifoumi.models.Action;
+import com.formation.chifoumi.models.ChifoumiAction;
+import com.formation.chifoumi.services.ChifoumiService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,9 +23,22 @@ public class InitGameServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Recupere les données provenant du formulaire
+
         System.out.println(req.getParameter("player-action"));
-//        String action = req.getParameter("player-action");
+        String action = req.getParameter("player-action");
+
+        ChifoumiAction computerAction = ChifoumiAction.computerAction();
+        ChifoumiAction playerAction = new ChifoumiAction(Action.valueOf(action.toUpperCase()), "player");
+
+        String winner = ChifoumiAction.getWinner(playerAction, computerAction);
+
+        req.setAttribute("playerAction", playerAction.getAction().toString());
+        req.setAttribute("computerAction", computerAction.getAction().toString());
+        req.setAttribute("winner", winner);
+
+        req
+                .getRequestDispatcher("/WEB-INF/game.jsp")
+                .forward(req, resp);
 
 //        resp.sendRedirect("test");
     }
