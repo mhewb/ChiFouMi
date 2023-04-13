@@ -1,6 +1,6 @@
 package com.formation.chifoumi.models;
 
-public enum Action {
+public enum EnumActions {
 
     CHI,
     FOU,

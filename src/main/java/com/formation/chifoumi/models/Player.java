@@ -3,26 +3,56 @@ package com.formation.chifoumi.models;
 public class Player {
 
     private String name;
-    private int nbOfWinning;
+    private int nbOfWins;
+    private EnumActions action;
 
     public Player(String name) {
         this.name = name;
-        this.nbOfWinning = 0;
+        this.nbOfWins = 0;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getNbOfWins() {
+        return nbOfWins;
     }
 
-    public int getNbOfWinning() {
-        return nbOfWinning;
+    public void increaseWins() {
+        this.nbOfWins++;
     }
 
-    public void setNbOfWinning(int nbOfWinning) {
-        this.nbOfWinning = nbOfWinning;
+    public void resetWins() {
+        this.nbOfWins = 0;
     }
+
+    public EnumActions getAction() {
+        return this.action;
+    }
+
+    public void setAction(EnumActions action) {
+        this.action = action;
+    }
+
+    // chi = pierre
+    // fou = feuille
+    // mi = ciseaux ?
+
+    public void setRandomAction() {
+
+        double random = Math.random();
+        if (random < 0.33) {
+            this.setAction(EnumActions.CHI);
+        } else if (random <= 0.66) {
+            this.setAction(EnumActions.FOU);
+        } else {
+            this.setAction(EnumActions.MI);
+        }
+
+    }
+
+
 }
+
+

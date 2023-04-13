@@ -19,17 +19,27 @@
 <body>
 
 <div class="container-md">
-<h3 class="p-5 mx-auto text-danger">Welcome to the Chifoumi game</h3>
+    <h3 class="p-5 mx-auto text-danger">Welcome to the Chifoumi game</h3>
 
-<form id="game" method="post" action="">
+    <form method="get" action="">
+        <button id="replay" class="btn btn-secondary" type="submit">Replay</button>
+    </form>
 
-    <c:forEach var="action" items="${actions}">
+    <p> Players choose ${playerAction} and computer played ${computerAction} </p>
+    <c:set var="isAWinner" value="${winner != null}"/>
+    <c:if test="${!isAWinner}">
+        <p>Equality!</p>
+    </c:if>
+    <c:if test="${isAWinner}">
+        <p>${winner.getName()} won ! </p>
+    </c:if>
 
-        <button class="btn btn-primary" value="${action.toString()}" name="player-action" type="submit">${action.toString()}</button>
+    <p> Player total victory ${playerTotWins}</p>
+    <p> Computer total victory ${computerTotWins}</p>
 
-    </c:forEach>
-</form>
-
+    <c:if test="${bigWinner != null}">
+        <p>${bigWinner.getName()} is the winner !</p>
+    </c:if>
 
 </div>
 
