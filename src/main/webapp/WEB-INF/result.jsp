@@ -18,28 +18,57 @@
 </head>
 <body>
 
-<div class="container-md">
-    <h3 class="p-5 mx-auto text-danger">Welcome to the Chifoumi game</h3>
+<jsp:include page="menu.jsp"></jsp:include>
 
-    <form method="get" action="">
-        <button id="replay" class="btn btn-secondary" type="submit">Replay</button>
-    </form>
+<div class="container-md p-3">
 
-    <p> Players choose ${playerAction} and computer played ${computerAction} </p>
-    <c:set var="isAWinner" value="${winner != null}"/>
-    <c:if test="${!isAWinner}">
-        <p>Equality!</p>
-    </c:if>
-    <c:if test="${isAWinner}">
-        <p>${winner.getName()} won ! </p>
-    </c:if>
+        <div class="row border">
 
-    <p> Player total victory ${playerTotWins}</p>
-    <p> Computer total victory ${computerTotWins}</p>
+            <div class="col d-flex align-items-center">
+                <h1>Play ChiFouMi!</h1>
+            </div>
+            <div class="col">
+                <div class="d-flex flex-column  align-items-center">
 
-    <c:if test="${bigWinner != null}">
-        <p>${bigWinner.getName()} is the winner !</p>
-    </c:if>
+                    <p>Total victory:<br/>
+                    Player: ${playerTotWins}<br/>
+                    Computer: ${computerTotWins}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row d-flex flex-column">
+
+            <div class="col">
+
+                <form method="get" action="">
+                    <button id="replay" class="btn btn-secondary btn-lg" type="submit">Play again!</button>
+                </form>
+
+             </div>
+
+
+        <div class="col">
+
+            <p> Players choose ${playerAction} and computer played ${computerAction} </p>
+            <p>${empty winner ? 'Equality!' : winner.getName() += ' won!'}</p>
+
+            <c:if test="${!empty bigWinner}">
+                <p>${bigWinner.getName()} is the winner !</p>
+            </c:if>
+
+        </div>
+        </div>
+
+
+
+
+
+    </div>
+
 
 </div>
 

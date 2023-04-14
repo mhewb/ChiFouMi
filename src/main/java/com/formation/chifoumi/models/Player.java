@@ -4,7 +4,7 @@ public class Player {
 
     private String name;
     private int nbOfWins;
-    private EnumActions action;
+    private Action action;
 
     public Player(String name) {
         this.name = name;
@@ -14,6 +14,7 @@ public class Player {
     public String getName() {
         return name;
     }
+    public void setName(String name) { this.name = name;}
 
     public int getNbOfWins() {
         return nbOfWins;
@@ -27,11 +28,11 @@ public class Player {
         this.nbOfWins = 0;
     }
 
-    public EnumActions getAction() {
+    public Action getAction() {
         return this.action;
     }
 
-    public void setAction(EnumActions action) {
+    public void setAction(Action action) {
         this.action = action;
     }
 
@@ -43,11 +44,11 @@ public class Player {
 
         double random = Math.random();
         if (random < 0.33) {
-            this.setAction(EnumActions.CHI);
+            this.setAction(Action.CHI);
         } else if (random <= 0.66) {
-            this.setAction(EnumActions.FOU);
+            this.setAction(Action.FOU);
         } else {
-            this.setAction(EnumActions.MI);
+            this.setAction(Action.MI);
         }
 
     }

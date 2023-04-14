@@ -1,6 +1,6 @@
 package com.formation.chifoumi.services;
 
-import com.formation.chifoumi.models.EnumActions;
+import com.formation.chifoumi.models.Action;
 import com.formation.chifoumi.models.Player;
 
 public class ChifoumiService {
@@ -26,21 +26,21 @@ public class ChifoumiService {
 
         switch (player1.getAction()) {
             case CHI -> {
-                if (player2.getAction().equals(EnumActions.MI)) {
+                if (player2.getAction().equals(Action.MI)) {
                     return player1;
                 } else {
                     return player2;
                 }
             }
             case FOU -> {
-                if (player2.getAction().equals(EnumActions.CHI)) {
+                if (player2.getAction().equals(Action.CHI)) {
                     return player1;
                 } else {
                     return player2;
                 }
             }
             case MI -> {
-                if (player2.getAction().equals(EnumActions.FOU)) {
+                if (player2.getAction().equals(Action.FOU)) {
                     return player1;
                 } else {
                     return player2;
